@@ -1,6 +1,6 @@
 include <config.scad>
 include <front_block.scad>
-include <e3d_v6_all_metall_hotend.scad>
+use <e3d_v6_all_metall_hotend.scad>
 
 platform_height = 5;
 
@@ -35,11 +35,6 @@ difference(){
     }
 }
 
-//color("purple")
-//    translate([-cos(60) * finished_front_block_y / 2, 
-//                finished_front_block_y / 2, finished_front_block_z - platform_height])
-//            cylinder(d1=lbearing_od, d2=lbearing_od, h=platform_height*3);
-
 module effector() {
 translate([0,0,cube_z])
     platform();
@@ -50,3 +45,5 @@ translate([-cos(60) * finished_front_block_y / 2,
 rotate([180,0,0])
 e3d();
 }
+
+effector();
