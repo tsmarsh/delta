@@ -1,15 +1,5 @@
-cube_z=25;
-cube_x=25;
-edge_height = 3;
-padding = 4;
-
-lbearing_od = 14.5; //half mm small for tight fit
-lbearing_id = 9; //1mm large for loose fit
-rbearing_id = 9; //1mm for loose fit
-rbearing_od = 21; //1mm small for tight fit
-rbearing_depth = 8;
-
-cube_y= (rbearing_od * 1.5) + padding * 2;
+include <config.scad>
+include <front_block.scad> 
 
 module block() {
     rear_block();
@@ -34,21 +24,6 @@ module rear_block() {
                 cube(size=[cube_x - rbearing_depth - padding, cube_y - lbearing_od - (2 * padding), cube_z]);
           }
      }
-}
-
-module front_block() {
-    difference(){
-        cube(size=[rbearing_depth+padding, cube_y, cube_z]);
-        union(){
-            translate([0, padding + rbearing_od /2 , ((cube_z) / 2)])
-                rotate([0,90,0])  
-                    cylinder(d1=rbearing_od, d2=rbearing_od, h=rbearing_depth);
-            translate([0, padding + rbearing_od /2 , ((cube_z) / 2)])
-                rotate([0,90,0])  
-                    cylinder(d1=rbearing_id, d2=rbearing_id, h=rbearing_depth + padding);
-            
-        }
-    }
 }
 
 module linear_bearing_shaft(){
@@ -83,15 +58,6 @@ module finished_rear_block(){
          }
 }
 
-module finished_front_block(){
-         union(){
-             front_block();
-             rotate([180,0,0])
-                  translate([0, -cube_y * 2,-cube_z])
-                  front_block();
-         }
-}
-
 module finished_block(){
          union(){
              block();
@@ -123,19 +89,12 @@ module edge(){
 }
 
 
-//translate([0,0,cube_z])
-//finished_edge();
-//
-//finished_block();
-//
-//translate([0,0])
-//finished_edge();
+translate([0,0,cube_z])
+finished_edge();
 
-projection()
-    finished_edge();
+finished_block();
 
-projection()
-    translate([cube_x + padding + rbearing_depth + 10, 0, 0])
-    finished_rear_block();
+translate([0,0])
+finished_edge();
 
 
