@@ -45,5 +45,3 @@ translate([-cos(60) * finished_front_block_y / 2,
 rotate([180,0,0])
 e3d();
 }
-
-effector();

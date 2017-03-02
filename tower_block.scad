@@ -39,16 +39,6 @@ module rotating_bearing_shaft() {
      } 
 }
 
-module bearing(od, id, height, c) {    
-     difference(){
-          color(c)
-               cylinder(d1=od, d2=od, h=height);
-          color(c)
-               translate([0,0,-1])
-               cylinder(d1=id, d2=id, h=height + 2);
-     }
-}
-
 module finished_rear_block(){
          union(){
              rear_block();
@@ -88,13 +78,14 @@ module edge(){
      }
 }
 
-
-translate([0,0,cube_z])
+module tower_block(){
+ translate([0,0,cube_z])
 finished_edge();
 
 finished_block();
 
 translate([0,0])
-finished_edge();
+finished_edge();   
+}
 
 
