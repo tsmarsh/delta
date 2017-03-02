@@ -10,3 +10,6 @@ rbearing_od = 21; //1mm small for tight fit
 rbearing_depth = 8;
 
 cube_y= (rbearing_od * 1.5) + padding * 2;
+
+rod_length = 220;
+rod_radius = 8;
