@@ -13,3 +13,9 @@ cube_y= (rbearing_od * 1.5) + padding * 2;
 
 rod_length = 220;
 rod_radius = 8;
+
+ball_d = 4.7625;
+
+rod_seperation = 35;
+
+ball_y = cube_y - (rod_seperation / 2);
